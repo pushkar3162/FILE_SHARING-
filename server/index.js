@@ -9,9 +9,14 @@ const app =express();
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://file-sharing-2-em6a.onrender.com'],
+  credentials: true
+}));
+
+app.use(express.json());
 app.use('/',router);
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 DBConnection();
 
